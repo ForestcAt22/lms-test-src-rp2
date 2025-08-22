@@ -61,13 +61,15 @@ public class Case02 {
 	@Order(2)
 	@DisplayName("テスト02 DBに登録されていないユーザーでログイン")
 	void test02() throws IOException {
+		//DBに登録されていないユーザ情報を入力
 		webDriver.findElement(By.id("loginId")).sendKeys("Test0001");
 		webDriver.findElement(By.id("password")).sendKeys("Test0001");
-
+		//ログインボタンをクリック
 		webDriver.findElement(By.xpath("//input[@value='ログイン']")).click();
-
+		//ログインに失敗し、エラーメッセージが表示されることを検証
 		assertTrue(webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[1]/form/span")).isDisplayed());
 
+		//スクリーンショットを取得して保存
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file, new File(
 				"C:\\\\\\\\Users\\\\\\\\user\\\\\\\\git\\\\\\\\lms-test-src-rp2\\\\\\\\test_code_creation_name\\\\\\\\doc\\\\\\\\CT_F01_02_login_screen.png"));
