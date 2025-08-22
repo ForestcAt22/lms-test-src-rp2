@@ -1,7 +1,15 @@
 package jp.co.sss.lms.ct.f01_login1;
 
-import static jp.co.sss.lms.ct.util.WebDriverUtils.*;
+import static jp.co.sss.lms.ct.util.WebDriverUtils.closeDriver;
+import static jp.co.sss.lms.ct.util.WebDriverUtils.createDriver;
+import static jp.co.sss.lms.ct.util.WebDriverUtils.webDriver;
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -9,6 +17,9 @@ import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 /**
  * 結合テスト ログイン機能①
@@ -34,8 +45,19 @@ public class Case01 {
 	@Test
 	@Order(1)
 	@DisplayName("テスト01 トップページURLでアクセス")
-	void test01() {
-		// TODO ここに追加
-	}
+	void test01() throws IOException {
+		//トップページへアクセス
+		webDriver.get("http://localhost:8080/lms");
+		//URLでログイン画面へ遷移か検証
+		assertEquals("http://localhost:8080/lms/", webDriver.getCurrentUrl());
 
+		//ログインID、パスワード、ログインボタン検証
+		assertTrue(webDriver.findElement(By.id("loginId")).isDisplayed());
+		assertTrue(webDriver.findElement(By.id("password")).isDisplayed());
+		assertTrue(webDriver.findElement(By.xpath("//input[@value='ログイン']")).isDisplayed());
+
+		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(file, new File(
+				"C:\\\\Users\\\\user\\\\git\\\\lms-test-src-rp2\\\\test_code_creation_name\\\\doc\\\\CT_F01_01_login_screen.png"));
+	}
 }
