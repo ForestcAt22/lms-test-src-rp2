@@ -85,7 +85,7 @@ public class Case04 {
 	@Test
 	@Order(3)
 	@DisplayName("テスト03 上部メニューの「ヘルプ」リンクからヘルプ画面に遷移")
-	void test03() {
+	void test03() throws IOException {
 		//ドロップダウンリストをクリック
 		webDriver.findElement(By.xpath("//*[@id=\"nav-content\"]/ul[1]/li[4]/a")).click();
 		//「ヘルプ」リンクをクリック
@@ -94,6 +94,10 @@ public class Case04 {
 		assertEquals("http://localhost:8080/lms/help", webDriver.getCurrentUrl());
 		//よくある質問の要素の表示の検証
 		assertTrue(webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[2]/div[2]/p/a")).isDisplayed());
+		//スクリーンショットを取得して保存
+		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(file, new File(
+				"C:\\\\\\\\Users\\\\\\\\user\\\\\\\\git\\\\\\\\lms-test-src-rp2\\\\\\\\test_code_creation_name\\\\\\\\evidence\\\\\\\\CT_F02_04_help_screen.png"));
 	}
 
 	@Test
@@ -113,6 +117,6 @@ public class Case04 {
 		//スクリーンショットを取得して保存
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file, new File(
-				"C:\\\\\\\\Users\\\\\\\\user\\\\\\\\git\\\\\\\\lms-test-src-rp2\\\\\\\\test_code_creation_name\\\\\\\\evidence\\\\\\\\CT_F01_04_login_screen.png"));
+				"C:\\\\\\\\Users\\\\\\\\user\\\\\\\\git\\\\\\\\lms-test-src-rp2\\\\\\\\test_code_creation_name\\\\\\\\evidence\\\\\\\\CT_F02_04_faq_screen.png"));
 	}
 }
