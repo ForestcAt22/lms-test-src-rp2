@@ -68,7 +68,7 @@ public class Case03 {
 		assertEquals("http://localhost:8080/lms/", webDriver.getCurrentUrl());
 		//DBに登録されているユーザ情報を入力
 		webDriver.findElement(By.id("loginId")).sendKeys("StudentAA01");
-		webDriver.findElement(By.id("password")).sendKeys("StudentAA01");
+		webDriver.findElement(By.id("password")).sendKeys("StudenTAA01");
 		//ログインボタンをクリック
 		webDriver.findElement(By.xpath("//input[@value='ログイン']")).click();
 		//コース詳細画面の要素が表示されるまで待機
@@ -83,7 +83,7 @@ public class Case03 {
 		//スクリーンショットを取得して保存
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file, new File(
-				"C:\\\\\\\\Users\\\\\\\\user\\\\\\\\git\\\\\\\\lms-test-src-rp2\\\\\\\\test_code_creation_name\\\\\\\\doc\\\\\\\\CT_F01_03_login_screen.png"));
+				"C:\\\\\\\\Users\\\\\\\\user\\\\\\\\git\\\\\\\\lms-test-src-rp2\\\\\\\\test_code_creation_name\\\\\\\\evidence\\\\\\\\CT_F01_03_login_screen.png"));
 	}
 
 }
