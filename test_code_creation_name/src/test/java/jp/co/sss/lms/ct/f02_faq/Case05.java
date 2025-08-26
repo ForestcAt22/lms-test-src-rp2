@@ -156,6 +156,7 @@ public class Case05 {
 	@Order(6)
 	@DisplayName("テスト06 「クリア」ボタン押下で入力したキーワードを消去")
 	void test06() throws IOException {
+		//「クリア」ボタンをクリック
 		webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[1]/form/fieldset/div[2]/div/input[2]")).click();
 		//スクリーンショットを取得して保存
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
