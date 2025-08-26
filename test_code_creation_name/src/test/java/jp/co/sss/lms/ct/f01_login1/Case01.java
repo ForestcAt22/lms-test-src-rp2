@@ -58,6 +58,6 @@ public class Case01 {
 		//スクリーンショットを取得して保存
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file, new File(
-				"C:\\\\Users\\\\user\\\\git\\\\lms-test-src-rp2\\\\test_code_creation_name\\\\evidence\\\\CT_F01_01_login_screen.png"));
+				"C:\\\\Users\\\\user\\\\git\\\\lms-test-src-rp2\\\\test_code_creation_name\\\\evidence\\\\CT_F01_C01_T01_top_screen.png"));
 	}
 }

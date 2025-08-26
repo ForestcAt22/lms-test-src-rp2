@@ -47,7 +47,7 @@ public class Case04 {
 	@Test
 	@Order(1)
 	@DisplayName("テスト01 トップページURLでアクセス")
-	void test01() {
+	void test01() throws IOException {
 		//トップページへアクセス
 		webDriver.get("http://localhost:8080/lms");
 		//URLでログイン画面へ遷移か検証
@@ -57,12 +57,18 @@ public class Case04 {
 		assertTrue(webDriver.findElement(By.id("loginId")).isDisplayed());
 		assertTrue(webDriver.findElement(By.id("password")).isDisplayed());
 		assertTrue(webDriver.findElement(By.xpath("//input[@value='ログイン']")).isDisplayed());
+
+		//スクリーンショットを取得して保存
+		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(file, new File(
+				"C:\\\\\\\\Users\\\\\\\\user\\\\\\\\git\\\\\\\\lms-test-src-rp2\\\\\\\\test_code_creation_name\\\\\\\\evidence\\\\\\\\CT_F02_C04_T01_top_screen.png"));
+
 	}
 
 	@Test
 	@Order(2)
 	@DisplayName("テスト02 初回ログイン済みの受講生ユーザーでログイン")
-	void test02() {
+	void test02() throws IOException {
 		//トップページへアクセス
 		webDriver.get("http://localhost:8080/lms");
 		//URLでログイン画面へ遷移か検証
@@ -80,6 +86,12 @@ public class Case04 {
 
 		//コース詳細画面の要素を確認
 		assertTrue(webDriver.findElement(By.id("contents")).isDisplayed());
+
+		//スクリーンショットを取得して保存
+		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(file, new File(
+				"C:\\\\\\\\Users\\\\\\\\user\\\\\\\\git\\\\\\\\lms-test-src-rp2\\\\\\\\test_code_creation_name\\\\\\\\evidence\\\\\\\\CT_F02_C04_T02_login_screen.png"));
+
 	}
 
 	@Test
@@ -97,7 +109,7 @@ public class Case04 {
 		//スクリーンショットを取得して保存
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file, new File(
-				"C:\\\\\\\\Users\\\\\\\\user\\\\\\\\git\\\\\\\\lms-test-src-rp2\\\\\\\\test_code_creation_name\\\\\\\\evidence\\\\\\\\CT_F02_04_help_screen.png"));
+				"C:\\\\\\\\Users\\\\\\\\user\\\\\\\\git\\\\\\\\lms-test-src-rp2\\\\\\\\test_code_creation_name\\\\\\\\evidence\\\\\\\\CT_F02_C04_T03_help_screen.png"));
 	}
 
 	@Test
@@ -117,6 +129,6 @@ public class Case04 {
 		//スクリーンショットを取得して保存
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file, new File(
-				"C:\\\\\\\\Users\\\\\\\\user\\\\\\\\git\\\\\\\\lms-test-src-rp2\\\\\\\\test_code_creation_name\\\\\\\\evidence\\\\\\\\CT_F02_04_faq_screen.png"));
+				"C:\\\\\\\\Users\\\\\\\\user\\\\\\\\git\\\\\\\\lms-test-src-rp2\\\\\\\\test_code_creation_name\\\\\\\\evidence\\\\\\\\CT_F02_C04_T04_faq_screen.png"));
 	}
 }

@@ -56,6 +56,12 @@ public class Case03 {
 		assertTrue(webDriver.findElement(By.id("loginId")).isDisplayed());
 		assertTrue(webDriver.findElement(By.id("password")).isDisplayed());
 		assertTrue(webDriver.findElement(By.xpath("//input[@value='ログイン']")).isDisplayed());
+
+		//スクリーンショットを取得して保存
+		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(file, new File(
+				"C:\\\\\\\\Users\\\\\\\\user\\\\\\\\git\\\\\\\\lms-test-src-rp2\\\\\\\\test_code_creation_name\\\\\\\\evidence\\\\\\\\CT_F01_C03_T01_top_screen.png"));
+
 	}
 
 	@Test
@@ -83,7 +89,7 @@ public class Case03 {
 		//スクリーンショットを取得して保存
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file, new File(
-				"C:\\\\\\\\Users\\\\\\\\user\\\\\\\\git\\\\\\\\lms-test-src-rp2\\\\\\\\test_code_creation_name\\\\\\\\evidence\\\\\\\\CT_F01_03_login_screen.png"));
+				"C:\\\\\\\\Users\\\\\\\\user\\\\\\\\git\\\\\\\\lms-test-src-rp2\\\\\\\\test_code_creation_name\\\\\\\\evidence\\\\\\\\CT_F01_C03_T02_login_screen.png"));
 	}
 
 }
